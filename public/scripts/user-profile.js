@@ -38,20 +38,47 @@ var UserProfile = function (_React$Component) {
 var UserHeader = function (_React$Component2) {
   _inherits(UserHeader, _React$Component2);
 
-  function UserHeader() {
+  function UserHeader(props) {
     _classCallCheck(this, UserHeader);
 
-    return _possibleConstructorReturn(this, (UserHeader.__proto__ || Object.getPrototypeOf(UserHeader)).apply(this, arguments));
+    var _this2 = _possibleConstructorReturn(this, (UserHeader.__proto__ || Object.getPrototypeOf(UserHeader)).call(this, props));
+
+    var isLikeAdded = false;
+    _this2.toggleLike = _this2.toggleLike.bind(_this2);
+    _this2.state = {
+      likes: ["Likes", 121],
+      following: ["Following", 723],
+      followers: ["Followers", 4433]
+    };
+    return _this2;
   }
 
   _createClass(UserHeader, [{
+    key: "toggleLike",
+    value: function toggleLike() {
+      var _this3 = this;
+
+      this.setState(function (prevState) {
+        if (_this3.isLikeAdded) {
+          return {
+            likes: [prevState.likes[0], prevState.likes[1] + 1]
+          };
+        } else {
+          return {
+            likes: [prevState.likes[0], prevState.likes[1] - 1]
+          };
+        }
+      });
+      this.isLikeAdded = !this.isLikeAdded;
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement(
         "div",
-        { className: "user-header" },
-        React.createElement(UserInfo, null),
-        React.createElement(UserFollowers, null)
+        { className: "user_header" },
+        React.createElement(UserInfo, { toggleLike: this.toggleLike }),
+        React.createElement(UserFollowers, { likes: this.state.likes, following: this.state.following, followers: this.state.followers })
       );
     }
   }]);
@@ -65,14 +92,14 @@ var UserInfo = function (_React$Component3) {
   function UserInfo(props) {
     _classCallCheck(this, UserInfo);
 
-    var _this3 = _possibleConstructorReturn(this, (UserInfo.__proto__ || Object.getPrototypeOf(UserInfo)).call(this, props));
+    var _this4 = _possibleConstructorReturn(this, (UserInfo.__proto__ || Object.getPrototypeOf(UserInfo)).call(this, props));
 
-    _this3.state = {
+    _this4.state = {
       user_photo: "http://via.placeholder.com/70x70",
       user_name: "Greg Miserandino",
       user_location: "Philadelphia"
     };
-    return _this3;
+    return _this4;
   }
 
   _createClass(UserInfo, [{
@@ -80,20 +107,28 @@ var UserInfo = function (_React$Component3) {
     value: function render() {
       return React.createElement(
         "div",
-        { className: "user-header__info" },
+        { className: "user_header__info" },
         React.createElement("img", { src: this.state.user_photo, alt: "user.jpg" }),
         React.createElement(
           "p",
-          { className: "user-header__name" },
+          { className: "user_header__name" },
           this.state.user_name
         ),
         React.createElement(
           "p",
-          { className: "user-header__location" },
+          { className: "user_header__location" },
           this.state.user_location
         ),
-        React.createElement("i", { "class": "user-header__like fa fa-heart-o", "aria-hidden": "true" }),
-        React.createElement("i", { "class": "user-header__share fa fa-share-square-o", "aria-hidden": "true" })
+        React.createElement(
+          "button",
+          { onClick: this.props.toggleLike },
+          React.createElement("i", { "class": "user_header__like fa fa-heart-o", "aria-hidden": "true" })
+        ),
+        React.createElement(
+          "button",
+          null,
+          React.createElement("i", { "class": "user_header__share fa fa-share-square-o", "aria-hidden": "true" })
+        )
       );
     }
   }]);
@@ -104,17 +139,10 @@ var UserInfo = function (_React$Component3) {
 var UserFollowers = function (_React$Component4) {
   _inherits(UserFollowers, _React$Component4);
 
-  function UserFollowers(props) {
+  function UserFollowers() {
     _classCallCheck(this, UserFollowers);
 
-    var _this4 = _possibleConstructorReturn(this, (UserFollowers.__proto__ || Object.getPrototypeOf(UserFollowers)).call(this, props));
-
-    _this4.state = {
-      likes: ["Likes", 121],
-      following: ["Following", 723],
-      followers: ["Followers", 4433]
-    };
-    return _this4;
+    return _possibleConstructorReturn(this, (UserFollowers.__proto__ || Object.getPrototypeOf(UserFollowers)).apply(this, arguments));
   }
 
   _createClass(UserFollowers, [{
@@ -125,10 +153,10 @@ var UserFollowers = function (_React$Component4) {
         null,
         React.createElement(
           "div",
-          { className: "user-header__followers" },
-          React.createElement(UserFollowersCounter, { user_stats: this.state.likes }),
-          React.createElement(UserFollowersCounter, { user_stats: this.state.following }),
-          React.createElement(UserFollowersCounter, { user_stats: this.state.followers })
+          { className: "user_header__followers" },
+          React.createElement(UserFollowersCounter, { user_stats: this.props.likes }),
+          React.createElement(UserFollowersCounter, { user_stats: this.props.following }),
+          React.createElement(UserFollowersCounter, { user_stats: this.props.followers })
         ),
         React.createElement(
           "button",
@@ -180,12 +208,12 @@ var UserComments = function (_React$Component6) {
   function UserComments(props) {
     _classCallCheck(this, UserComments);
 
-    var _this6 = _possibleConstructorReturn(this, (UserComments.__proto__ || Object.getPrototypeOf(UserComments)).call(this, props));
+    var _this7 = _possibleConstructorReturn(this, (UserComments.__proto__ || Object.getPrototypeOf(UserComments)).call(this, props));
 
-    _this6.state = {
+    _this7.state = {
       comment: ["http://via.placeholder.com/40x40", "Mike Ross", "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula.", "1d"]
     };
-    return _this6;
+    return _this7;
   }
 
   _createClass(UserComments, [{

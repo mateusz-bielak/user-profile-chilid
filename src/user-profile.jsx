@@ -13,11 +13,35 @@ class UserProfile extends React.Component {
 }
 
 class UserHeader extends React.Component {
+  constructor(props) {
+    super(props);
+    const isLikeAdded = false;
+    this.toggleLike = this.toggleLike.bind(this);
+    this.state = {
+      likes: ["Likes", 121],
+      following: ["Following", 723],
+      followers: ["Followers", 4433]
+    };
+  };
+  toggleLike() {
+    this.setState((prevState) => {
+      if (this.isLikeAdded) {
+        return {
+          likes: [prevState.likes[0], prevState.likes[1] + 1]
+        };
+      } else {
+        return {
+          likes: [prevState.likes[0], prevState.likes[1] - 1]
+        };
+      }
+    });
+    this.isLikeAdded = !this.isLikeAdded;
+  };
   render() {
     return (
-      <div className="user-header">
-        <UserInfo />
-        <UserFollowers />
+      <div className="user_header">
+        <UserInfo toggleLike={ this.toggleLike } />
+        <UserFollowers likes={ this.state.likes } following={ this.state.following } followers={ this.state.followers } />
       </div>
       );
   };
@@ -34,39 +58,34 @@ class UserInfo extends React.Component {
   };
   render() {
     return (
-      <div className="user-header__info">
+      <div className="user_header__info">
         <img src={ this.state.user_photo } alt="user.jpg" />
-        <p className="user-header__name">
+        <p className="user_header__name">
           { this.state.user_name }
         </p>
-        <p className="user-header__location">
+        <p className="user_header__location">
           { this.state.user_location }
         </p>
-        { /*You have to attach font awesome in your html file,
-                                                                                                                                                                                        or provide your own icons*/ }
-        <i class="user-header__like fa fa-heart-o" aria-hidden="true"></i>
-        <i class="user-header__share fa fa-share-square-o" aria-hidden="true"></i>
+        { /*You have to attach font awesome in your html file, or provide your own icons*/ }
+        <button onClick={ this.props.toggleLike }>
+          <i class="user_header__like fa fa-heart-o" aria-hidden="true"></i>
+        </button>
+        <button>
+          <i class="user_header__share fa fa-share-square-o" aria-hidden="true"></i>
+        </button>
       </div>
       );
   };
 }
 
 class UserFollowers extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      likes: ["Likes", 121],
-      following: ["Following", 723],
-      followers: ["Followers", 4433]
-    };
-  };
   render() {
     return (
       <div>
-        <div className="user-header__followers">
-          <UserFollowersCounter user_stats={ this.state.likes } />
-          <UserFollowersCounter user_stats={ this.state.following } />
-          <UserFollowersCounter user_stats={ this.state.followers } />
+        <div className="user_header__followers">
+          <UserFollowersCounter user_stats={ this.props.likes } />
+          <UserFollowersCounter user_stats={ this.props.following } />
+          <UserFollowersCounter user_stats={ this.props.followers } />
         </div>
         <button>Follow</button>
       </div>
