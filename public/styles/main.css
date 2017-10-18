@@ -1,5 +1,5 @@
 html {
-  font-size: 100%;
+  font-size: 90%;
 }
 
 *,
@@ -8,20 +8,20 @@ html {
   font: inherit;
 }
 
-.user-header {
+.user_header {
   display: flex;
   align-items: center;
   flex-direction: column;
   background-color: rgb(221, 216, 216);
 }
 
-.user-header__info {
+.user_header__info {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.user-header__followers {
+.user_header__followers {
   display: flex;
 }
 
