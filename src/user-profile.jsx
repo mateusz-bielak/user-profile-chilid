@@ -16,7 +16,9 @@ class UserHeader extends React.Component {
   constructor(props) {
     super(props);
     const isLikeAdded = false;
+    const isFollowersAdded = false;
     this.toggleLike = this.toggleLike.bind(this);
+    this.toggleFollowers = this.toggleFollowers.bind(this);
     this.state = {
       likes: ["Likes", 121],
       following: ["Following", 723],
@@ -37,11 +39,25 @@ class UserHeader extends React.Component {
     });
     this.isLikeAdded = !this.isLikeAdded;
   };
+  toggleFollowers() {
+    this.setState((prevState) => {
+      if (this.isFollowersAdded) {
+        return {
+          followers: [prevState.followers[0], prevState.followers[1] + 1]
+        };
+      } else {
+        return {
+          followers: [prevState.followers[0], prevState.followers[1] - 1]
+        };
+      }
+    });
+    this.isFollowersAdded = !this.isFollowersAdded;
+  };
   render() {
     return (
       <div className="user_header">
         <UserInfo toggleLike={ this.toggleLike } />
-        <UserFollowers likes={ this.state.likes } following={ this.state.following } followers={ this.state.followers } />
+        <UserFollowers likes={ this.state.likes } following={ this.state.following } followers={ this.state.followers } toggleFollowers={ this.toggleFollowers } />
       </div>
       );
   };
@@ -87,7 +103,7 @@ class UserFollowers extends React.Component {
           <UserFollowersCounter user_stats={ this.props.following } />
           <UserFollowersCounter user_stats={ this.props.followers } />
         </div>
-        <button>Follow</button>
+        <button onClick={ this.props.toggleFollowers }>Follow</button>
       </div>
       );
   };

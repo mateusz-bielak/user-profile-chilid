@@ -44,7 +44,9 @@ var UserHeader = function (_React$Component2) {
     var _this2 = _possibleConstructorReturn(this, (UserHeader.__proto__ || Object.getPrototypeOf(UserHeader)).call(this, props));
 
     var isLikeAdded = false;
+    var isFollowersAdded = false;
     _this2.toggleLike = _this2.toggleLike.bind(_this2);
+    _this2.toggleFollowers = _this2.toggleFollowers.bind(_this2);
     _this2.state = {
       likes: ["Likes", 121],
       following: ["Following", 723],
@@ -72,13 +74,31 @@ var UserHeader = function (_React$Component2) {
       this.isLikeAdded = !this.isLikeAdded;
     }
   }, {
+    key: "toggleFollowers",
+    value: function toggleFollowers() {
+      var _this4 = this;
+
+      this.setState(function (prevState) {
+        if (_this4.isFollowersAdded) {
+          return {
+            followers: [prevState.followers[0], prevState.followers[1] + 1]
+          };
+        } else {
+          return {
+            followers: [prevState.followers[0], prevState.followers[1] - 1]
+          };
+        }
+      });
+      this.isFollowersAdded = !this.isFollowersAdded;
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement(
         "div",
         { className: "user_header" },
         React.createElement(UserInfo, { toggleLike: this.toggleLike }),
-        React.createElement(UserFollowers, { likes: this.state.likes, following: this.state.following, followers: this.state.followers })
+        React.createElement(UserFollowers, { likes: this.state.likes, following: this.state.following, followers: this.state.followers, toggleFollowers: this.toggleFollowers })
       );
     }
   }]);
@@ -92,14 +112,14 @@ var UserInfo = function (_React$Component3) {
   function UserInfo(props) {
     _classCallCheck(this, UserInfo);
 
-    var _this4 = _possibleConstructorReturn(this, (UserInfo.__proto__ || Object.getPrototypeOf(UserInfo)).call(this, props));
+    var _this5 = _possibleConstructorReturn(this, (UserInfo.__proto__ || Object.getPrototypeOf(UserInfo)).call(this, props));
 
-    _this4.state = {
+    _this5.state = {
       user_photo: "http://via.placeholder.com/70x70",
       user_name: "Greg Miserandino",
       user_location: "Philadelphia"
     };
-    return _this4;
+    return _this5;
   }
 
   _createClass(UserInfo, [{
@@ -160,7 +180,7 @@ var UserFollowers = function (_React$Component4) {
         ),
         React.createElement(
           "button",
-          null,
+          { onClick: this.props.toggleFollowers },
           "Follow"
         )
       );
@@ -208,12 +228,12 @@ var UserComments = function (_React$Component6) {
   function UserComments(props) {
     _classCallCheck(this, UserComments);
 
-    var _this7 = _possibleConstructorReturn(this, (UserComments.__proto__ || Object.getPrototypeOf(UserComments)).call(this, props));
+    var _this8 = _possibleConstructorReturn(this, (UserComments.__proto__ || Object.getPrototypeOf(UserComments)).call(this, props));
 
-    _this7.state = {
+    _this8.state = {
       comment: ["http://via.placeholder.com/40x40", "Mike Ross", "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula.", "1d"]
     };
-    return _this7;
+    return _this8;
   }
 
   _createClass(UserComments, [{
