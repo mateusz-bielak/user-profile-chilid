@@ -49,7 +49,7 @@ var UserHeader = function (_React$Component2) {
     value: function render() {
       return React.createElement(
         "div",
-        null,
+        { className: "user-header" },
         React.createElement(UserInfo, null),
         React.createElement(UserFollowers, null)
       );
@@ -62,10 +62,17 @@ var UserHeader = function (_React$Component2) {
 var UserInfo = function (_React$Component3) {
   _inherits(UserInfo, _React$Component3);
 
-  function UserInfo() {
+  function UserInfo(props) {
     _classCallCheck(this, UserInfo);
 
-    return _possibleConstructorReturn(this, (UserInfo.__proto__ || Object.getPrototypeOf(UserInfo)).apply(this, arguments));
+    var _this3 = _possibleConstructorReturn(this, (UserInfo.__proto__ || Object.getPrototypeOf(UserInfo)).call(this, props));
+
+    _this3.state = {
+      user_photo: "http://via.placeholder.com/70x70",
+      user_name: "Greg Miserandino",
+      user_location: "Philadelphia"
+    };
+    return _this3;
   }
 
   _createClass(UserInfo, [{
@@ -73,28 +80,20 @@ var UserInfo = function (_React$Component3) {
     value: function render() {
       return React.createElement(
         "div",
-        null,
-        React.createElement("img", { src: "http://via.placeholder.com/70x70", alt: "user.jpg" }),
+        { className: "user-header__info" },
+        React.createElement("img", { src: this.state.user_photo, alt: "user.jpg" }),
         React.createElement(
           "p",
-          null,
-          "User Name"
+          { className: "user-header__name" },
+          this.state.user_name
         ),
         React.createElement(
           "p",
-          null,
-          "User Location"
+          { className: "user-header__location" },
+          this.state.user_location
         ),
-        React.createElement(
-          "i",
-          null,
-          "Like icon"
-        ),
-        React.createElement(
-          "i",
-          null,
-          "Share icon"
-        )
+        React.createElement("i", { "class": "user-header__like fa fa-heart-o", "aria-hidden": "true" }),
+        React.createElement("i", { "class": "user-header__share fa fa-share-square-o", "aria-hidden": "true" })
       );
     }
   }]);
@@ -105,10 +104,17 @@ var UserInfo = function (_React$Component3) {
 var UserFollowers = function (_React$Component4) {
   _inherits(UserFollowers, _React$Component4);
 
-  function UserFollowers() {
+  function UserFollowers(props) {
     _classCallCheck(this, UserFollowers);
 
-    return _possibleConstructorReturn(this, (UserFollowers.__proto__ || Object.getPrototypeOf(UserFollowers)).apply(this, arguments));
+    var _this4 = _possibleConstructorReturn(this, (UserFollowers.__proto__ || Object.getPrototypeOf(UserFollowers)).call(this, props));
+
+    _this4.state = {
+      likes: ["Likes", 121],
+      following: ["Following", 723],
+      followers: ["Followers", 4433]
+    };
+    return _this4;
   }
 
   _createClass(UserFollowers, [{
@@ -119,45 +125,10 @@ var UserFollowers = function (_React$Component4) {
         null,
         React.createElement(
           "div",
-          null,
-          React.createElement(
-            "p",
-            null,
-            "Likes"
-          ),
-          React.createElement(
-            "p",
-            null,
-            "121"
-          )
-        ),
-        React.createElement(
-          "div",
-          null,
-          React.createElement(
-            "p",
-            null,
-            "Following"
-          ),
-          React.createElement(
-            "p",
-            null,
-            "723"
-          )
-        ),
-        React.createElement(
-          "div",
-          null,
-          React.createElement(
-            "p",
-            null,
-            "Followers"
-          ),
-          React.createElement(
-            "p",
-            null,
-            "4433"
-          )
+          { className: "user-header__followers" },
+          React.createElement(UserFollowersCounter, { user_stats: this.state.likes }),
+          React.createElement(UserFollowersCounter, { user_stats: this.state.following }),
+          React.createElement(UserFollowersCounter, { user_stats: this.state.followers })
         ),
         React.createElement(
           "button",
@@ -171,13 +142,50 @@ var UserFollowers = function (_React$Component4) {
   return UserFollowers;
 }(React.Component);
 
-var UserComments = function (_React$Component5) {
-  _inherits(UserComments, _React$Component5);
+var UserFollowersCounter = function (_React$Component5) {
+  _inherits(UserFollowersCounter, _React$Component5);
 
-  function UserComments() {
+  function UserFollowersCounter() {
+    _classCallCheck(this, UserFollowersCounter);
+
+    return _possibleConstructorReturn(this, (UserFollowersCounter.__proto__ || Object.getPrototypeOf(UserFollowersCounter)).apply(this, arguments));
+  }
+
+  _createClass(UserFollowersCounter, [{
+    key: "render",
+    value: function render() {
+      return React.createElement(
+        "div",
+        null,
+        React.createElement(
+          "p",
+          null,
+          this.props.user_stats[0]
+        ),
+        React.createElement(
+          "p",
+          null,
+          this.props.user_stats[1]
+        )
+      );
+    }
+  }]);
+
+  return UserFollowersCounter;
+}(React.Component);
+
+var UserComments = function (_React$Component6) {
+  _inherits(UserComments, _React$Component6);
+
+  function UserComments(props) {
     _classCallCheck(this, UserComments);
 
-    return _possibleConstructorReturn(this, (UserComments.__proto__ || Object.getPrototypeOf(UserComments)).apply(this, arguments));
+    var _this6 = _possibleConstructorReturn(this, (UserComments.__proto__ || Object.getPrototypeOf(UserComments)).call(this, props));
+
+    _this6.state = {
+      comment: ["http://via.placeholder.com/40x40", "Mike Ross", "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula.", "1d"]
+    };
+    return _this6;
   }
 
   _createClass(UserComments, [{
@@ -191,7 +199,7 @@ var UserComments = function (_React$Component5) {
           null,
           "Hide comments"
         ),
-        React.createElement(UserComment, null),
+        React.createElement(UserComment, { comment: this.state.comment }),
         React.createElement("input", { type: "text" })
       );
     }
@@ -200,8 +208,8 @@ var UserComments = function (_React$Component5) {
   return UserComments;
 }(React.Component);
 
-var UserComment = function (_React$Component6) {
-  _inherits(UserComment, _React$Component6);
+var UserComment = function (_React$Component7) {
+  _inherits(UserComment, _React$Component7);
 
   function UserComment() {
     _classCallCheck(this, UserComment);
@@ -215,21 +223,21 @@ var UserComment = function (_React$Component6) {
       return React.createElement(
         "div",
         null,
-        React.createElement("img", { src: "http://via.placeholder.com/40x40", alt: "user.jpg" }),
+        React.createElement("img", { src: this.props.comment[0], alt: "user.jpg" }),
         React.createElement(
           "p",
           null,
-          "User name"
+          this.props.comment[1]
         ),
         React.createElement(
           "p",
           null,
-          "User comment lorem ipsum......"
+          this.props.comment[2]
         ),
         React.createElement(
           "p",
           null,
-          "Date"
+          this.props.comment[3]
         )
       );
     }
@@ -237,5 +245,7 @@ var UserComment = function (_React$Component6) {
 
   return UserComment;
 }(React.Component);
+// Set your location for User Profile component below
 
-ReactDOM.render(React.createElement(UserProfile, null), document.querySelector("#app"));
+
+ReactDOM.render(React.createElement(UserProfile, null), document.querySelector("body"));
