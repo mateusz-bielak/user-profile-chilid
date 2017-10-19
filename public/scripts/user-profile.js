@@ -25,7 +25,7 @@ var UserProfile = function (_React$Component) {
     value: function render() {
       return React.createElement(
         "div",
-        null,
+        { className: "user_profile" },
         React.createElement(UserHeader, null),
         React.createElement(UserComments, null)
       );
@@ -128,11 +128,16 @@ var UserInfo = function (_React$Component3) {
       return React.createElement(
         "div",
         { className: "user_header__info" },
-        React.createElement("img", { src: this.state.user_photo, alt: "user.jpg" }),
+        React.createElement("img", { className: "user_header__photo", src: this.state.user_photo, alt: "user.jpg" }),
         React.createElement(
           "p",
           { className: "user_header__name" },
-          this.state.user_name
+          this.state.user_name,
+          React.createElement(
+            "button",
+            { className: "user_header__like", onClick: this.props.toggleLike },
+            React.createElement("i", { className: "fa fa-heart-o", "aria-hidden": "true" })
+          )
         ),
         React.createElement(
           "p",
@@ -141,13 +146,8 @@ var UserInfo = function (_React$Component3) {
         ),
         React.createElement(
           "button",
-          { onClick: this.props.toggleLike },
-          React.createElement("i", { "class": "user_header__like fa fa-heart-o", "aria-hidden": "true" })
-        ),
-        React.createElement(
-          "button",
-          null,
-          React.createElement("i", { "class": "user_header__share fa fa-share-square-o", "aria-hidden": "true" })
+          { className: "user_header__share" },
+          React.createElement("i", { className: "fa fa-share-square-o", "aria-hidden": "true" })
         )
       );
     }
@@ -170,17 +170,17 @@ var UserFollowers = function (_React$Component4) {
     value: function render() {
       return React.createElement(
         "div",
-        null,
+        { className: "user_header__followers" },
         React.createElement(
           "div",
-          { className: "user_header__followers" },
+          { className: "user_header__stats" },
           React.createElement(UserFollowersCounter, { user_stats: this.props.likes }),
           React.createElement(UserFollowersCounter, { user_stats: this.props.following }),
           React.createElement(UserFollowersCounter, { user_stats: this.props.followers })
         ),
         React.createElement(
           "button",
-          { onClick: this.props.toggleFollowers },
+          { className: "user_header__follow", onClick: this.props.toggleFollowers },
           "Follow"
         )
       );
@@ -204,16 +204,16 @@ var UserFollowersCounter = function (_React$Component5) {
     value: function render() {
       return React.createElement(
         "div",
-        null,
+        { className: "user_header__box" },
         React.createElement(
           "p",
-          null,
-          this.props.user_stats[0]
+          { className: "user_header__box_values" },
+          this.props.user_stats[1]
         ),
         React.createElement(
           "p",
-          null,
-          this.props.user_stats[1]
+          { className: "user_header__box_names" },
+          this.props.user_stats[0]
         )
       );
     }
@@ -296,4 +296,4 @@ var UserComment = function (_React$Component7) {
 // Set your location for User Profile component below
 
 
-ReactDOM.render(React.createElement(UserProfile, null), document.querySelector("body"));
+ReactDOM.render(React.createElement(UserProfile, null), document.querySelector("#app"));

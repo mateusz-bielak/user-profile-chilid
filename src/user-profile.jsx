@@ -4,7 +4,7 @@
 class UserProfile extends React.Component {
   render() {
     return (
-      <div>
+      <div className="user_profile">
         <UserHeader />
         <UserComments />
       </div>
@@ -75,19 +75,19 @@ class UserInfo extends React.Component {
   render() {
     return (
       <div className="user_header__info">
-        <img src={ this.state.user_photo } alt="user.jpg" />
+        <img className="user_header__photo" src={ this.state.user_photo } alt="user.jpg" />
         <p className="user_header__name">
           { this.state.user_name }
+          <button className="user_header__like" onClick={ this.props.toggleLike }>
+            <i className="fa fa-heart-o" aria-hidden="true"></i>
+          </button>
         </p>
         <p className="user_header__location">
           { this.state.user_location }
         </p>
         { /*You have to attach font awesome in your html file, or provide your own icons*/ }
-        <button onClick={ this.props.toggleLike }>
-          <i class="user_header__like fa fa-heart-o" aria-hidden="true"></i>
-        </button>
-        <button>
-          <i class="user_header__share fa fa-share-square-o" aria-hidden="true"></i>
+        <button className="user_header__share">
+          <i className="fa fa-share-square-o" aria-hidden="true"></i>
         </button>
       </div>
       );
@@ -97,13 +97,13 @@ class UserInfo extends React.Component {
 class UserFollowers extends React.Component {
   render() {
     return (
-      <div>
-        <div className="user_header__followers">
+      <div className="user_header__followers">
+        <div className="user_header__stats">
           <UserFollowersCounter user_stats={ this.props.likes } />
           <UserFollowersCounter user_stats={ this.props.following } />
           <UserFollowersCounter user_stats={ this.props.followers } />
         </div>
-        <button onClick={ this.props.toggleFollowers }>Follow</button>
+        <button className="user_header__follow" onClick={ this.props.toggleFollowers }>Follow</button>
       </div>
       );
   };
@@ -112,12 +112,12 @@ class UserFollowers extends React.Component {
 class UserFollowersCounter extends React.Component {
   render() {
     return (
-      <div>
-        <p>
-          { this.props.user_stats[0] }
-        </p>
-        <p>
+      <div className="user_header__box">
+        <p className="user_header__box_values">
           { this.props.user_stats[1] }
+        </p>
+        <p className="user_header__box_names">
+          { this.props.user_stats[0] }
         </p>
       </div>
       );
@@ -161,4 +161,4 @@ class UserComment extends React.Component {
   };
 }
 // Set your location for User Profile component below
-ReactDOM.render(<UserProfile />, document.querySelector("body"));
+ReactDOM.render(<UserProfile />, document.querySelector("#app"));

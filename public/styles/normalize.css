@@ -449,24 +449,3 @@ template {
 [hidden] {
   display: none;
 }
-
-/* Personal preset block
-   ========================================================================== */
-
-html {
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-	padding: 0;
-  margin: 0;
-  font-size: 62.5%;
-  font-weight: normal;
-}
-*, *:before, *:after {
-	-webkit-box-sizing: inherit;
-	box-sizing: inherit;
-	color: inherit;
-	font: inherit;
-	padding: 0;
-	margin: 0;
-	text-decoration: inherit;
-}
