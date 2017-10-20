@@ -8,7 +8,7 @@
 }
 
 /* Buttons */
-.user_header__like, .user_header__share, .user_header__follow {
+.user_info__like, .user_info__share, .user_followers__button {
   padding: 0;
   background-color: transparent;
   border: none;
@@ -26,7 +26,7 @@
   box-shadow: 0px 0px 4px 0px rgba(172,172,172,0.5);
 }
 
-.user_header__info {
+.user_info {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -34,13 +34,13 @@
   margin-bottom: 35px;
 }
 
-.user_header__photo {
+.user_info__photo {
   position: absolute;
   top: -48px;
   border-radius: 50%;
   }
 
-.user_header__name {
+.user_info__name {
   position: relative;
   margin: 0;
   color: #002C71;
@@ -48,7 +48,7 @@
   line-height: 22px;
 }
 
-.user_header__like {
+.user_info__like {
   position: absolute;
   right: -25px;
   color: #D3D3D3;
@@ -56,30 +56,30 @@
   line-height: 22px;
 }
 
-.user_header__location {
+.user_info__location {
   margin: 0;
   color: #8298B9;
   font-size: 1.2em;
   line-height: 15px;
 }
 
-.user_header__share {
+.user_info__share {
   position: absolute;
   top: 12px;
   right: 12px;
   color: #FFA640;
 }
 
-.user_header__followers {
+.user_followers {
   width: 100%;
 }
 
-.user_header__stats {
+.user_followers__stats {
   display: flex;
   justify-content: space-between;
 }
 
-.user_header__box {
+.user_followers__box {
   flex: 1;
   display: flex;
   align-items: center;
@@ -88,24 +88,24 @@
   font-size: 1em;
 }
 
-.user_header__box:nth-of-type(2) {
+.user_followers__box:nth-of-type(2) {
   flex: 2;
   border-left: 1px solid rgba(151, 151, 151, .1);
   border-right: 1px solid rgba(151, 151, 151, .1);
   margin: 0 8%;
 }
 
-.user_header__box_values {
+.user_followers__values {
   margin: 0;
   color: #FFA640;
   font-size: 2.4em;
 }
 
-.user_header__box_names {
+.user_followers__names {
   margin: 0;
 }
 
-.user_header__follow {
+.user_followers__button {
   height: 46px;
   width: 100%;
   margin-top: 21px;

@@ -127,26 +127,26 @@ var UserInfo = function (_React$Component3) {
     value: function render() {
       return React.createElement(
         "div",
-        { className: "user_header__info" },
-        React.createElement("img", { className: "user_header__photo", src: this.state.user_photo, alt: "user.jpg" }),
+        { className: "user_info" },
+        React.createElement("img", { className: "user_info__photo", src: this.state.user_photo, alt: "user.jpg" }),
         React.createElement(
           "p",
-          { className: "user_header__name" },
+          { className: "user_info__name" },
           this.state.user_name,
           React.createElement(
             "button",
-            { className: "user_header__like", onClick: this.props.toggleLike },
+            { className: "user_info__like", onClick: this.props.toggleLike },
             React.createElement("i", { className: "fa fa-heart-o", "aria-hidden": "true" })
           )
         ),
         React.createElement(
           "p",
-          { className: "user_header__location" },
+          { className: "user_info__location" },
           this.state.user_location
         ),
         React.createElement(
           "button",
-          { className: "user_header__share" },
+          { className: "user_info__share" },
           React.createElement("i", { className: "fa fa-share-square-o", "aria-hidden": "true" })
         )
       );
@@ -170,17 +170,17 @@ var UserFollowers = function (_React$Component4) {
     value: function render() {
       return React.createElement(
         "div",
-        { className: "user_header__followers" },
+        { className: "user_followers" },
         React.createElement(
           "div",
-          { className: "user_header__stats" },
+          { className: "user_followers__stats" },
           React.createElement(UserFollowersCounter, { user_stats: this.props.likes }),
           React.createElement(UserFollowersCounter, { user_stats: this.props.following }),
           React.createElement(UserFollowersCounter, { user_stats: this.props.followers })
         ),
         React.createElement(
           "button",
-          { className: "user_header__follow", onClick: this.props.toggleFollowers },
+          { className: "user_followers__button", onClick: this.props.toggleFollowers },
           "Follow"
         )
       );
@@ -204,15 +204,15 @@ var UserFollowersCounter = function (_React$Component5) {
     value: function render() {
       return React.createElement(
         "div",
-        { className: "user_header__box" },
+        { className: "user_followers__box" },
         React.createElement(
           "p",
-          { className: "user_header__box_values" },
+          { className: "user_followers__values" },
           this.props.user_stats[1]
         ),
         React.createElement(
           "p",
-          { className: "user_header__box_names" },
+          { className: "user_followers__names" },
           this.props.user_stats[0]
         )
       );

@@ -74,19 +74,19 @@ class UserInfo extends React.Component {
   };
   render() {
     return (
-      <div className="user_header__info">
-        <img className="user_header__photo" src={ this.state.user_photo } alt="user.jpg" />
-        <p className="user_header__name">
+      <div className="user_info">
+        <img className="user_info__photo" src={ this.state.user_photo } alt="user.jpg" />
+        <p className="user_info__name">
           { this.state.user_name }
-          <button className="user_header__like" onClick={ this.props.toggleLike }>
+          <button className="user_info__like" onClick={ this.props.toggleLike }>
             <i className="fa fa-heart-o" aria-hidden="true"></i>
           </button>
         </p>
-        <p className="user_header__location">
+        <p className="user_info__location">
           { this.state.user_location }
         </p>
         { /*You have to attach font awesome in your html file, or provide your own icons*/ }
-        <button className="user_header__share">
+        <button className="user_info__share">
           <i className="fa fa-share-square-o" aria-hidden="true"></i>
         </button>
       </div>
@@ -97,13 +97,13 @@ class UserInfo extends React.Component {
 class UserFollowers extends React.Component {
   render() {
     return (
-      <div className="user_header__followers">
-        <div className="user_header__stats">
+      <div className="user_followers">
+        <div className="user_followers__stats">
           <UserFollowersCounter user_stats={ this.props.likes } />
           <UserFollowersCounter user_stats={ this.props.following } />
           <UserFollowersCounter user_stats={ this.props.followers } />
         </div>
-        <button className="user_header__follow" onClick={ this.props.toggleFollowers }>Follow</button>
+        <button className="user_followers__button" onClick={ this.props.toggleFollowers }>Follow</button>
       </div>
       );
   };
@@ -112,11 +112,11 @@ class UserFollowers extends React.Component {
 class UserFollowersCounter extends React.Component {
   render() {
     return (
-      <div className="user_header__box">
-        <p className="user_header__box_values">
+      <div className="user_followers__box">
+        <p className="user_followers__values">
           { this.props.user_stats[1] }
         </p>
-        <p className="user_header__box_names">
+        <p className="user_followers__names">
           { this.props.user_stats[0] }
         </p>
       </div>
