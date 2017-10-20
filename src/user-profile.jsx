@@ -133,10 +133,11 @@ class UserComments extends React.Component {
   };
   render() {
     return (
-      <div>
-        <button>Hide comments</button>
+      <div className="user_comments">
+        <button className="user_comments__hiding">Hide comments</button>
         <UserComment comment={ this.state.comment } />
-        <input type="text" />
+        <UserComment comment={ this.state.comment } />
+        <input className="user_comments__textbox" type="text" placeholder="Add a comment" />
       </div>
       );
   };
@@ -145,15 +146,17 @@ class UserComments extends React.Component {
 class UserComment extends React.Component {
   render() {
     return (
-      <div>
-        <img src={ this.props.comment[0] } alt="user.jpg" />
-        <p>
-          { this.props.comment[1] }
-        </p>
-        <p>
-          { this.props.comment[2] }
-        </p>
-        <p>
+      <div className="user_comments__container">
+        <img className="user_comments__photo" src={ this.props.comment[0] } alt="user.jpg" />
+        <div className="user_comments__content">
+          <p className="user_comments__name">
+            { this.props.comment[1] }
+          </p>
+          <p className="user_comments__commentary">
+            { this.props.comment[2] }
+          </p>
+        </div>
+        <p className="user_comments__date">
           { this.props.comment[3] }
         </p>
       </div>

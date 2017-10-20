@@ -241,14 +241,15 @@ var UserComments = function (_React$Component6) {
     value: function render() {
       return React.createElement(
         "div",
-        null,
+        { className: "user_comments" },
         React.createElement(
           "button",
-          null,
+          { className: "user_comments__hiding" },
           "Hide comments"
         ),
         React.createElement(UserComment, { comment: this.state.comment }),
-        React.createElement("input", { type: "text" })
+        React.createElement(UserComment, { comment: this.state.comment }),
+        React.createElement("input", { className: "user_comments__textbox", type: "text", placeholder: "Add a comment" })
       );
     }
   }]);
@@ -270,21 +271,25 @@ var UserComment = function (_React$Component7) {
     value: function render() {
       return React.createElement(
         "div",
-        null,
-        React.createElement("img", { src: this.props.comment[0], alt: "user.jpg" }),
+        { className: "user_comments__container" },
+        React.createElement("img", { className: "user_comments__photo", src: this.props.comment[0], alt: "user.jpg" }),
         React.createElement(
-          "p",
-          null,
-          this.props.comment[1]
+          "div",
+          { className: "user_comments__content" },
+          React.createElement(
+            "p",
+            { className: "user_comments__name" },
+            this.props.comment[1]
+          ),
+          React.createElement(
+            "p",
+            { className: "user_comments__commentary" },
+            this.props.comment[2]
+          )
         ),
         React.createElement(
           "p",
-          null,
-          this.props.comment[2]
-        ),
-        React.createElement(
-          "p",
-          null,
+          { className: "user_comments__date" },
           this.props.comment[3]
         )
       );
