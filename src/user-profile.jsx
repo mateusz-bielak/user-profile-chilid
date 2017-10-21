@@ -1,10 +1,11 @@
 // babel src\user-profile.jsx --out-file=public\scripts\user-profile.js --presets=env,react --watch
-// live-server public
 
 class UserProfile extends React.Component {
   render() {
     return (
       <div className="user_profile">
+        <div className="user_profile__background"></div>
+        <div className="user_profile__wrapper"></div>
         <UserHeader />
         <UserComments />
       </div>

@@ -9,7 +9,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 // babel src\user-profile.jsx --out-file=public\scripts\user-profile.js --presets=env,react --watch
-// live-server public
 
 var UserProfile = function (_React$Component) {
   _inherits(UserProfile, _React$Component);
@@ -26,6 +25,8 @@ var UserProfile = function (_React$Component) {
       return React.createElement(
         "div",
         { className: "user_profile" },
+        React.createElement("div", { className: "user_profile__background" }),
+        React.createElement("div", { className: "user_profile__wrapper" }),
         React.createElement(UserHeader, null),
         React.createElement(UserComments, null)
       );
