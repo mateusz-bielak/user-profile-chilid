@@ -81,16 +81,20 @@ class UserInfo extends React.Component {
   render() {
     return (
       <div className="user_info">
-        <div className="user_info__photo" style={ { backgroundImage: `url(${this.state.user_photo})` } } alt="user.jpg"></div>
-        <p className="user_info__name">
-          { this.state.user_name }
-          <button className="user_info__like" onClick={ this.props.toggleLike }>
-            <i className="fa fa-heart-o" aria-hidden="true"></i>
-          </button>
-        </p>
-        <p className="user_info__location">
-          { this.state.user_location }
-        </p>
+        <div className="user_info__container">
+          <div className="user_info__photo" style={ { backgroundImage: `url(${this.state.user_photo})` } } alt="user.jpg"></div>
+          <div className="user_info__box">
+            <p className="user_info__name">
+              { this.state.user_name }
+              <button className="user_info__like" onClick={ this.props.toggleLike }>
+                <i className="fa fa-heart-o" aria-hidden="true"></i>
+              </button>
+            </p>
+            <p className="user_info__location">
+              { this.state.user_location }
+            </p>
+          </div>
+        </div>
         <button onClick={ this.showLink } className="user_info__share">
           <i className="fa fa-share-square-o" aria-hidden="true"></i>
         </button>

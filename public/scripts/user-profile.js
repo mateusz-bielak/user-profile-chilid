@@ -136,21 +136,29 @@ var UserInfo = function (_React$Component3) {
       return React.createElement(
         "div",
         { className: "user_info" },
-        React.createElement("div", { className: "user_info__photo", style: { backgroundImage: "url(" + this.state.user_photo + ")" }, alt: "user.jpg" }),
         React.createElement(
-          "p",
-          { className: "user_info__name" },
-          this.state.user_name,
+          "div",
+          { className: "user_info__container" },
+          React.createElement("div", { className: "user_info__photo", style: { backgroundImage: "url(" + this.state.user_photo + ")" }, alt: "user.jpg" }),
           React.createElement(
-            "button",
-            { className: "user_info__like", onClick: this.props.toggleLike },
-            React.createElement("i", { className: "fa fa-heart-o", "aria-hidden": "true" })
+            "div",
+            { className: "user_info__box" },
+            React.createElement(
+              "p",
+              { className: "user_info__name" },
+              this.state.user_name,
+              React.createElement(
+                "button",
+                { className: "user_info__like", onClick: this.props.toggleLike },
+                React.createElement("i", { className: "fa fa-heart-o", "aria-hidden": "true" })
+              )
+            ),
+            React.createElement(
+              "p",
+              { className: "user_info__location" },
+              this.state.user_location
+            )
           )
-        ),
-        React.createElement(
-          "p",
-          { className: "user_info__location" },
-          this.state.user_location
         ),
         React.createElement(
           "button",
