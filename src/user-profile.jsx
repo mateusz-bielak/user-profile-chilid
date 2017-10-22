@@ -147,6 +147,32 @@ class UserComments extends React.Component {
 }
 
 class UserComment extends React.Component {
+  constructor(props) {
+    super(props);
+    this.timeDifference = this.timeDifference.bind(this);
+  };
+  timeDifference(prevDate) {
+
+    const current = new Date();
+    const previous = new Date(prevDate);
+
+    const ms_per_minute = 60 * 1000;
+    const ms_per_hour = ms_per_minute * 60;
+    const ms_per_day = ms_per_hour * 24;
+
+    const elapsed = current - previous;
+
+    if (elapsed < ms_per_minute) {
+      return Math.floor(elapsed / 1000) + "s"
+    } else if (elapsed < ms_per_hour) {
+      return Math.floor(elapsed / ms_per_minute) + "m"
+    } else if (elapsed < ms_per_day) {
+      return Math.floor(elapsed / ms_per_hour) + "h"
+    } else {
+      return Math.floor(elapsed / ms_per_day) + "d"
+    }
+
+  };
   render() {
     return (
       <div className="user_comments__container">
@@ -160,7 +186,7 @@ class UserComment extends React.Component {
           </p>
         </div>
         <p className="user_comments__date">
-          { this.props.comment.date }
+          { this.timeDifference(this.props.comment.date) }
         </p>
       </div>
       );

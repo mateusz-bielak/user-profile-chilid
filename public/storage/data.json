@@ -10,13 +10,13 @@
       "photo": "/img/user-photo.jpg",
       "name": "Mike Ross",
       "content": "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula.",
-      "date": "2d"
+      "date": "2017-10-20T12:25:03.564Z"
     },
     {
       "photo": "/img/user-photo.jpg",
       "name": "Mike Ross",
       "content": "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula.",
-      "date": "1d"
+      "date": "2017-10-22T07:11:00.611Z"
     }
   ],
   "logged_in": {

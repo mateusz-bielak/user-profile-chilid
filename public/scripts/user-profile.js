@@ -266,13 +266,39 @@ var UserComments = function (_React$Component6) {
 var UserComment = function (_React$Component7) {
   _inherits(UserComment, _React$Component7);
 
-  function UserComment() {
+  function UserComment(props) {
     _classCallCheck(this, UserComment);
 
-    return _possibleConstructorReturn(this, (UserComment.__proto__ || Object.getPrototypeOf(UserComment)).apply(this, arguments));
+    var _this9 = _possibleConstructorReturn(this, (UserComment.__proto__ || Object.getPrototypeOf(UserComment)).call(this, props));
+
+    _this9.timeDifference = _this9.timeDifference.bind(_this9);
+    return _this9;
   }
 
   _createClass(UserComment, [{
+    key: "timeDifference",
+    value: function timeDifference(prevDate) {
+
+      var current = new Date();
+      var previous = new Date(prevDate);
+
+      var ms_per_minute = 60 * 1000;
+      var ms_per_hour = ms_per_minute * 60;
+      var ms_per_day = ms_per_hour * 24;
+
+      var elapsed = current - previous;
+
+      if (elapsed < ms_per_minute) {
+        return Math.floor(elapsed / 1000) + "s";
+      } else if (elapsed < ms_per_hour) {
+        return Math.floor(elapsed / ms_per_minute) + "m";
+      } else if (elapsed < ms_per_day) {
+        return Math.floor(elapsed / ms_per_hour) + "h";
+      } else {
+        return Math.floor(elapsed / ms_per_day) + "d";
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement(
@@ -300,7 +326,7 @@ var UserComment = function (_React$Component7) {
         React.createElement(
           "p",
           { className: "user_comments__date" },
-          this.props.comment.date
+          this.timeDifference(this.props.comment.date)
         )
       );
     }
