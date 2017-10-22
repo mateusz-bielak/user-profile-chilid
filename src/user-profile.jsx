@@ -141,6 +141,8 @@ class UserComments extends React.Component {
     const content = e.target.elements["comma"].value.trim();
     e.target.elements["comma"].value = ""; //Reset text input value
     if (content) {
+      const element = document.querySelector(".user_comments__scroll");
+      element.classList.remove("display");
       this.setState((prevState) => {
         return {
           comments: prevState.comments.concat([{
@@ -153,12 +155,18 @@ class UserComments extends React.Component {
       });
     }
   };
+  hide() {
+    const element = document.querySelector(".user_comments__scroll");
+    element.classList.toggle("display");
+  }
   render() {
     this.state.comments.sort((a, b) => new Date(a.date) - new Date(b.date));
     return (
       <div className="user_comments">
-        <button className="user_comments__hiding">Hide comments</button>
-        { [this.state.comments.map((comment, index) => <UserComment key={ index } comment={ comment } />)] }
+        <button onClick={ this.hide } className="user_comments__hiding">Hide comments</button>
+        <div className="user_comments__scroll">
+          { [this.state.comments.map((comment, index) => <UserComment key={ index } comment={ comment } />)] }
+        </div>
         <form onSubmit={ this.addComment } className="user_comments__form">
           <input className="user_comments__textbox" type="text" name="comma" placeholder="Add a comment" />
         </form>

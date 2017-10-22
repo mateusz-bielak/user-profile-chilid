@@ -36,6 +36,8 @@
   padding: 0;
   background-color: transparent;
   border: none;
+  cursor: pointer;
+  cursor: hand;
 }
 
 .user_header {
@@ -187,6 +189,8 @@
   -ms-flex-direction: column;
   flex-direction: column;
   position: relative;
+  overflow-y: hidden;
+  max-height: 590px;
   margin-top: 15px;
   background-color: #FFFFFF;
   border-radius: 5px;
@@ -203,6 +207,33 @@
   text-decoration-line: underline;
 }
 
+.user_comments__scroll {
+  overflow-y: scroll;
+  margin-right: 6px;
+  padding-right: 15px;
+}
+
+.display {
+  height: 0;
+}
+
+.user_comments__scroll::-webkit-scrollbar-track
+{
+	border-radius: 100px;
+	background-color: rgba(216,216,216,0.3);
+}
+
+.user_comments__scroll::-webkit-scrollbar
+{
+	width: 5px;
+}
+
+.user_comments__scroll::-webkit-scrollbar-thumb
+{
+	border-radius: 100px;
+  background: rgba(0,44,113,0.12);
+}
+
 .user_comments__container {
   box-sizing: border-box;
   display: -webkit-box;
@@ -214,7 +245,6 @@
   border-bottom: 1px solid #EBEBEB;
   padding-top: 32px;
   padding-left: 20px;
-  padding-right: 21px;
   width: 100%;
 }
 

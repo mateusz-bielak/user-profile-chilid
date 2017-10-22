@@ -251,6 +251,8 @@ var UserComments = function (_React$Component6) {
       var content = e.target.elements["comma"].value.trim();
       e.target.elements["comma"].value = ""; //Reset text input value
       if (content) {
+        var element = document.querySelector(".user_comments__scroll");
+        element.classList.remove("display");
         this.setState(function (prevState) {
           return {
             comments: prevState.comments.concat([{
@@ -264,6 +266,12 @@ var UserComments = function (_React$Component6) {
       }
     }
   }, {
+    key: "hide",
+    value: function hide() {
+      var element = document.querySelector(".user_comments__scroll");
+      element.classList.toggle("display");
+    }
+  }, {
     key: "render",
     value: function render() {
       this.state.comments.sort(function (a, b) {
@@ -274,12 +282,16 @@ var UserComments = function (_React$Component6) {
         { className: "user_comments" },
         React.createElement(
           "button",
-          { className: "user_comments__hiding" },
+          { onClick: this.hide, className: "user_comments__hiding" },
           "Hide comments"
         ),
-        [this.state.comments.map(function (comment, index) {
-          return React.createElement(UserComment, { key: index, comment: comment });
-        })],
+        React.createElement(
+          "div",
+          { className: "user_comments__scroll" },
+          [this.state.comments.map(function (comment, index) {
+            return React.createElement(UserComment, { key: index, comment: comment });
+          })]
+        ),
         React.createElement(
           "form",
           { onSubmit: this.addComment, className: "user_comments__form" },
