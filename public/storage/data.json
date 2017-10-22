@@ -22,5 +22,6 @@
   "logged_in": {
     "photo": "./img/user-photo.jpg",
     "user": "Mike Ross"
-  }
+  },
+  "link": "https://butseriously.github.io/user-profile-chilid/"
 }

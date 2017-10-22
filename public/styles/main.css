@@ -114,6 +114,24 @@
   color: #FFA640;
 }
 
+.user_info__link {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 10px;
+  height: 45px;
+  width: auto;
+  padding: 0 20px;
+  background: rgba(0,0,0,.8);
+  color: #FFFFFF;
+  font-size: 12px;
+  line-height: 45px;
+}
+
+.user_info__link--display {
+  display: block;
+}
+
 .user_followers {
   width: 100%;
 }
@@ -213,7 +231,7 @@
   padding-right: 15px;
 }
 
-.display {
+.user_comments__scroll--display {
   height: 0;
 }
 

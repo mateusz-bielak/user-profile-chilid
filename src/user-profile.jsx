@@ -73,9 +73,14 @@ class UserInfo extends React.Component {
     this.state = {
       user_photo: json.user_photo,
       user_name: json.user_name,
-      user_location: json.user_location
+      user_location: json.user_location,
+      link: json.link
     };
   };
+  showLink() {
+    const element = document.querySelector(".user_info__link");
+    element.classList.toggle("user_info__link--display");
+  }
   render() {
     return (
       <div className="user_info">
@@ -89,9 +94,12 @@ class UserInfo extends React.Component {
         <p className="user_info__location">
           { this.state.user_location }
         </p>
-        <button className="user_info__share">
+        <button onClick={ this.showLink } className="user_info__share">
           <i className="fa fa-share-square-o" aria-hidden="true"></i>
         </button>
+        <div className="user_info__link">
+          { this.state.link }
+        </div>
       </div>
       );
   };
@@ -142,7 +150,7 @@ class UserComments extends React.Component {
     e.target.elements["comma"].value = ""; //Reset text input value
     if (content) {
       const element = document.querySelector(".user_comments__scroll");
-      element.classList.remove("display");
+      element.classList.remove("user_comments__scroll--display");
       this.setState((prevState) => {
         return {
           comments: prevState.comments.concat([{
@@ -157,7 +165,7 @@ class UserComments extends React.Component {
   };
   hide() {
     const element = document.querySelector(".user_comments__scroll");
-    element.classList.toggle("display");
+    element.classList.toggle("user_comments__scroll--display");
   }
   render() {
     this.state.comments.sort((a, b) => new Date(a.date) - new Date(b.date));

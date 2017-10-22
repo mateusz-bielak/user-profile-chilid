@@ -122,12 +122,19 @@ var UserInfo = function (_React$Component3) {
     _this5.state = {
       user_photo: json.user_photo,
       user_name: json.user_name,
-      user_location: json.user_location
+      user_location: json.user_location,
+      link: json.link
     };
     return _this5;
   }
 
   _createClass(UserInfo, [{
+    key: "showLink",
+    value: function showLink() {
+      var element = document.querySelector(".user_info__link");
+      element.classList.toggle("user_info__link--display");
+    }
+  }, {
     key: "render",
     value: function render() {
       return React.createElement(
@@ -151,8 +158,13 @@ var UserInfo = function (_React$Component3) {
         ),
         React.createElement(
           "button",
-          { className: "user_info__share" },
+          { onClick: this.showLink, className: "user_info__share" },
           React.createElement("i", { className: "fa fa-share-square-o", "aria-hidden": "true" })
+        ),
+        React.createElement(
+          "div",
+          { className: "user_info__link" },
+          this.state.link
         )
       );
     }
@@ -253,7 +265,7 @@ var UserComments = function (_React$Component6) {
       e.target.elements["comma"].value = ""; //Reset text input value
       if (content) {
         var element = document.querySelector(".user_comments__scroll");
-        element.classList.remove("display");
+        element.classList.remove("user_comments__scroll--display");
         this.setState(function (prevState) {
           return {
             comments: prevState.comments.concat([{
@@ -270,7 +282,7 @@ var UserComments = function (_React$Component6) {
     key: "hide",
     value: function hide() {
       var element = document.querySelector(".user_comments__scroll");
-      element.classList.toggle("display");
+      element.classList.toggle("user_comments__scroll--display");
     }
   }, {
     key: "render",
@@ -406,6 +418,7 @@ module.exports={
   "logged_in": {
     "photo": "./img/user-photo.jpg",
     "user": "Mike Ross"
-  }
+  },
+  "link": "https://butseriously.github.io/user-profile-chilid/"
 }
 },{}]},{},[1]);
