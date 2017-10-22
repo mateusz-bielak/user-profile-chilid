@@ -204,6 +204,7 @@
 }
 
 .user_comments__container {
+  box-sizing: border-box;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -213,7 +214,7 @@
   border-bottom: 1px solid #EBEBEB;
   padding-top: 32px;
   padding-left: 20px;
-  margin-right: 21px;
+  padding-right: 21px;
   width: 100%;
 }
 
