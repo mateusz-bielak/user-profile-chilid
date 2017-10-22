@@ -1,6 +1,3 @@
-// babel src\user-profile.jsx --out-file=public\scripts\user-profile.js --presets=env,react --watch
-// watchify public\scripts\user-profile.js -o public\scripts\bundle.js
-
 const json = require("../storage/data.json");
 
 class UserProfile extends React.Component {
@@ -139,6 +136,8 @@ class UserComments extends React.Component {
   constructor(props) {
     super(props);
     this.addComment = this.addComment.bind(this);
+    this.hide = this.hide.bind(this);
+    const areCommentsVisible = true;
     this.state = {
       comments: json.comments,
       user: json.logged_in
@@ -166,12 +165,20 @@ class UserComments extends React.Component {
   hide() {
     const element = document.querySelector(".user_comments__scroll");
     element.classList.toggle("user_comments__scroll--display");
-  }
+    const button = document.querySelector(".user_comments__hiding");
+    this.areCommentsVisible = !this.areCommentsVisible;
+    if (this.areCommentsVisible) {
+      button.textContent = `Show comments (${this.state.comments.length})`
+    } else {
+      button.textContent = `Hide comments (${this.state.comments.length})`
+    }
+  };
   render() {
     this.state.comments.sort((a, b) => new Date(a.date) - new Date(b.date));
     return (
       <div className="user_comments">
-        <button onClick={ this.hide } className="user_comments__hiding">Hide comments</button>
+        <button onClick={ this.hide } className="user_comments__hiding">Hide comments (
+          { this.state.comments.length })</button>
         <div className="user_comments__scroll">
           { [this.state.comments.map((comment, index) => <UserComment key={ index } comment={ comment } />)] }
         </div>

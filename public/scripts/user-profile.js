@@ -8,9 +8,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// babel src\user-profile.jsx --out-file=public\scripts\user-profile.js --presets=env,react --watch
-// watchify public\scripts\user-profile.js -o public\scripts\bundle.js
-
 var json = require("../storage/data.json");
 
 var UserProfile = function (_React$Component) {
@@ -247,6 +244,8 @@ var UserComments = function (_React$Component6) {
     var _this8 = _possibleConstructorReturn(this, (UserComments.__proto__ || Object.getPrototypeOf(UserComments)).call(this, props));
 
     _this8.addComment = _this8.addComment.bind(_this8);
+    _this8.hide = _this8.hide.bind(_this8);
+    var areCommentsVisible = true;
     _this8.state = {
       comments: json.comments,
       user: json.logged_in
@@ -282,6 +281,13 @@ var UserComments = function (_React$Component6) {
     value: function hide() {
       var element = document.querySelector(".user_comments__scroll");
       element.classList.toggle("user_comments__scroll--display");
+      var button = document.querySelector(".user_comments__hiding");
+      this.areCommentsVisible = !this.areCommentsVisible;
+      if (this.areCommentsVisible) {
+        button.textContent = "Show comments (" + this.state.comments.length + ")";
+      } else {
+        button.textContent = "Hide comments (" + this.state.comments.length + ")";
+      }
     }
   }, {
     key: "render",
@@ -295,7 +301,9 @@ var UserComments = function (_React$Component6) {
         React.createElement(
           "button",
           { onClick: this.hide, className: "user_comments__hiding" },
-          "Hide comments"
+          "Hide comments (",
+          this.state.comments.length,
+          ")"
         ),
         React.createElement(
           "div",
