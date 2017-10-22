@@ -235,6 +235,7 @@ var UserComments = function (_React$Component6) {
 
     var _this8 = _possibleConstructorReturn(this, (UserComments.__proto__ || Object.getPrototypeOf(UserComments)).call(this, props));
 
+    _this8.addComment = _this8.addComment.bind(_this8);
     _this8.state = {
       comments: json.comments,
       user: json.logged_in
@@ -244,7 +245,25 @@ var UserComments = function (_React$Component6) {
 
   _createClass(UserComments, [{
     key: "addComment",
-    value: function addComment() {}
+    value: function addComment(e) {
+      var _this9 = this;
+
+      e.preventDefault();
+      var content = e.target.elements["comma"].value.trim();
+      e.target.elements["comma"].value = ""; //Reset text input value
+      if (content) {
+        this.setState(function (prevState) {
+          return {
+            comments: prevState.comments.concat([{
+              photo: _this9.state.user.photo,
+              name: _this9.state.user.user,
+              content: content,
+              date: new Date()
+            }])
+          };
+        });
+      }
+    }
   }, {
     key: "render",
     value: function render() {
@@ -262,7 +281,11 @@ var UserComments = function (_React$Component6) {
         [this.state.comments.map(function (comment, index) {
           return React.createElement(UserComment, { key: index, comment: comment });
         })],
-        React.createElement("input", { className: "user_comments__textbox", type: "text", placeholder: "Add a comment" })
+        React.createElement(
+          "form",
+          { onSubmit: this.addComment, className: "user_comments__form" },
+          React.createElement("input", { className: "user_comments__textbox", type: "text", name: "comma", placeholder: "Add a comment" })
+        )
       );
     }
   }]);
@@ -276,10 +299,10 @@ var UserComment = function (_React$Component7) {
   function UserComment(props) {
     _classCallCheck(this, UserComment);
 
-    var _this9 = _possibleConstructorReturn(this, (UserComment.__proto__ || Object.getPrototypeOf(UserComment)).call(this, props));
+    var _this10 = _possibleConstructorReturn(this, (UserComment.__proto__ || Object.getPrototypeOf(UserComment)).call(this, props));
 
-    _this9.timeDifference = _this9.timeDifference.bind(_this9);
-    return _this9;
+    _this10.timeDifference = _this10.timeDifference.bind(_this10);
+    return _this10;
   }
 
   _createClass(UserComment, [{

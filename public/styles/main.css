@@ -214,6 +214,7 @@
   padding-top: 32px;
   padding-left: 20px;
   margin-right: 21px;
+  width: 100%;
 }
 
 .user_comments__photo {
@@ -228,6 +229,7 @@
 
 .user_comments__content {
   padding-left: 11px;
+  width: 100%;
 }
 
 .user_comments__name {
@@ -253,11 +255,17 @@
   transform: translateX(-6px);
 }
 
+.user_comments__form {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 15px 25px 19px 25px;
+  text-align: center;
+}
+
 .user_comments__textbox {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  width: calc(100% - 50px);
-  margin: 15px 25px 19px 25px;
+  width: 100%;
   padding: 0;
   border: none;
   border-bottom: 2px solid #DBE0E8;

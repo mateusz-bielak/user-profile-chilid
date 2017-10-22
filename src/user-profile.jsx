@@ -130,19 +130,38 @@ class UserFollowersCounter extends React.Component {
 class UserComments extends React.Component {
   constructor(props) {
     super(props);
+    this.addComment = this.addComment.bind(this);
     this.state = {
       comments: json.comments,
       user: json.logged_in
     };
   };
-  addComment() {};
+  addComment(e) {
+    e.preventDefault();
+    const content = e.target.elements["comma"].value.trim();
+    e.target.elements["comma"].value = ""; //Reset text input value
+    if (content) {
+      this.setState((prevState) => {
+        return {
+          comments: prevState.comments.concat([{
+            photo: this.state.user.photo,
+            name: this.state.user.user,
+            content: content,
+            date: new Date()
+          }])
+        };
+      });
+    }
+  };
   render() {
     this.state.comments.sort((a, b) => new Date(a.date) - new Date(b.date));
     return (
       <div className="user_comments">
         <button className="user_comments__hiding">Hide comments</button>
         { [this.state.comments.map((comment, index) => <UserComment key={ index } comment={ comment } />)] }
-        <input className="user_comments__textbox" type="text" placeholder="Add a comment" />
+        <form onSubmit={ this.addComment } className="user_comments__form">
+          <input className="user_comments__textbox" type="text" name="comma" placeholder="Add a comment" />
+        </form>
       </div>
       );
   };
