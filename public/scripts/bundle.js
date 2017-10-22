@@ -243,8 +243,14 @@ var UserComments = function (_React$Component6) {
   }
 
   _createClass(UserComments, [{
+    key: "addComment",
+    value: function addComment() {}
+  }, {
     key: "render",
     value: function render() {
+      this.state.comments.sort(function (a, b) {
+        return new Date(a.date) - new Date(b.date);
+      });
       return React.createElement(
         "div",
         { className: "user_comments" },
@@ -353,13 +359,13 @@ module.exports={
       "photo": "/img/user-photo.jpg",
       "name": "Mike Ross",
       "content": "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula.",
-      "date": "2017-10-20T12:25:03.564Z"
+      "date": "2017-10-22T07:11:00.611Z"
     },
     {
       "photo": "/img/user-photo.jpg",
       "name": "Mike Ross",
       "content": "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula.",
-      "date": "2017-10-22T07:11:00.611Z"
+      "date": "2017-10-20T12:45:03.564Z"
     }
   ],
   "logged_in": {

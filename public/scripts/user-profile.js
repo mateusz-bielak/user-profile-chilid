@@ -242,8 +242,14 @@ var UserComments = function (_React$Component6) {
   }
 
   _createClass(UserComments, [{
+    key: "addComment",
+    value: function addComment() {}
+  }, {
     key: "render",
     value: function render() {
+      this.state.comments.sort(function (a, b) {
+        return new Date(a.date) - new Date(b.date);
+      });
       return React.createElement(
         "div",
         { className: "user_comments" },

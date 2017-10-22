@@ -135,7 +135,9 @@ class UserComments extends React.Component {
       user: json.logged_in
     };
   };
+  addComment() {};
   render() {
+    this.state.comments.sort((a, b) => new Date(a.date) - new Date(b.date));
     return (
       <div className="user_comments">
         <button className="user_comments__hiding">Hide comments</button>
@@ -145,7 +147,6 @@ class UserComments extends React.Component {
       );
   };
 }
-
 class UserComment extends React.Component {
   constructor(props) {
     super(props);
@@ -171,7 +172,6 @@ class UserComment extends React.Component {
     } else {
       return Math.floor(elapsed / ms_per_day) + "d"
     }
-
   };
   render() {
     return (
