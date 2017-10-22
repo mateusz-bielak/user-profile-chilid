@@ -1,4 +1,7 @@
 // babel src\user-profile.jsx --out-file=public\scripts\user-profile.js --presets=env,react --watch
+// watchify public\scripts\user-profile.js -o public\scripts\bundle.js
+
+const json = require("../storage/data.json");
 
 class UserProfile extends React.Component {
   render() {
@@ -21,9 +24,9 @@ class UserHeader extends React.Component {
     this.toggleLike = this.toggleLike.bind(this);
     this.toggleFollowers = this.toggleFollowers.bind(this);
     this.state = {
-      likes: ["Likes", 121],
-      following: ["Following", 723],
-      followers: ["Followers", 4433]
+      likes: json.likes,
+      following: json.following,
+      followers: json.followers
     };
   };
   toggleLike() {
@@ -68,15 +71,15 @@ class UserInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user_photo: "http://via.placeholder.com/70x70",
-      user_name: "Greg Miserandino",
-      user_location: "Philadelphia"
+      user_photo: json.user_photo,
+      user_name: json.user_name,
+      user_location: json.user_location
     };
   };
   render() {
     return (
       <div className="user_info">
-        <img className="user_info__photo" src={ this.state.user_photo } alt="user.jpg" />
+        <div className="user_info__photo" style={ { backgroundImage: `url(${this.state.user_photo})` } } alt="user.jpg"></div>
         <p className="user_info__name">
           { this.state.user_name }
           <button className="user_info__like" onClick={ this.props.toggleLike }>
@@ -86,7 +89,6 @@ class UserInfo extends React.Component {
         <p className="user_info__location">
           { this.state.user_location }
         </p>
-        { /*You have to attach font awesome in your html file, or provide your own icons*/ }
         <button className="user_info__share">
           <i className="fa fa-share-square-o" aria-hidden="true"></i>
         </button>
@@ -129,15 +131,15 @@ class UserComments extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      comment: ["http://via.placeholder.com/40x40", "Mike Ross", "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula.", "1d"]
+      comments: json.comments,
+      user: json.logged_in
     };
   };
   render() {
     return (
       <div className="user_comments">
         <button className="user_comments__hiding">Hide comments</button>
-        <UserComment comment={ this.state.comment } />
-        <UserComment comment={ this.state.comment } />
+        { [this.state.comments.map((comment, index) => <UserComment key={ index } comment={ comment } />)] }
         <input className="user_comments__textbox" type="text" placeholder="Add a comment" />
       </div>
       );
@@ -148,17 +150,17 @@ class UserComment extends React.Component {
   render() {
     return (
       <div className="user_comments__container">
-        <img className="user_comments__photo" src={ this.props.comment[0] } alt="user.jpg" />
+        <div className="user_comments__photo" style={ { backgroundImage: `url(${this.props.comment.photo})` } } alt="user.jpg"> </div>
         <div className="user_comments__content">
           <p className="user_comments__name">
-            { this.props.comment[1] }
+            { this.props.comment.name }
           </p>
           <p className="user_comments__commentary">
-            { this.props.comment[2] }
+            { this.props.comment.content }
           </p>
         </div>
         <p className="user_comments__date">
-          { this.props.comment[3] }
+          { this.props.comment.date }
         </p>
       </div>
       );
