@@ -1,4 +1,5 @@
 import React from 'react';
+import uuid from 'uuid';
 import data from '../../storage/data.json';
 import UserComment from './UserComment';
 
@@ -45,8 +46,8 @@ class UserComments extends React.Component {
           { this.state.comments.length })
         </button>
         <div className="user_comments__scroll">
-          { [this.state.comments.map((comment, index) =>
-            <UserComment key={index} comment={comment} />)] }
+          { [this.state.comments.map(comment =>
+            <UserComment key={uuid()} comment={comment} />)] }
         </div>
         <form onSubmit={this.addComment} className="user_comments__form">
           <input className="user_comments__textbox" type="text" name="comma" placeholder="Add a comment" />

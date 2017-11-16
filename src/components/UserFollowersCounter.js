@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 const UserFollowersCounter = props => (
@@ -10,5 +11,9 @@ const UserFollowersCounter = props => (
     </p>
   </div>
 );
+
+UserFollowersCounter.propTypes = {
+  user_stats: PropTypes.array.isRequired,
+};
 
 export default UserFollowersCounter;

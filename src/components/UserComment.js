@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 class UserComment extends React.Component {
@@ -39,5 +40,9 @@ class UserComment extends React.Component {
     );
   }
 }
+
+UserComment.propTypes = {
+  comment: PropTypes.object.isRequired,
+};
 
 export default UserComment;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import data from '../../storage/data.json';
 
@@ -39,5 +40,9 @@ class UserInfo extends React.Component {
     );
   }
 }
+
+UserInfo.propTypes = {
+  toggleLike: PropTypes.func.isRequired,
+};
 
 export default UserInfo;
