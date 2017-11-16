@@ -1,9 +1,10 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 
 module.exports = (env) => {
   const isProduction = env === 'production';
-  const CSSExtract = new ExtractTextPlugin('../styles/styles.css');
+  const CSSExtract = new ExtractTextPlugin('./styles/styles.css');
 
   return {
     entry: './src/app.js',
@@ -39,16 +40,19 @@ module.exports = (env) => {
           loader: 'file-loader',
           options: {
             name: '[name].[ext]',
-            outputPath: '../',
           },
         }],
     },
     plugins: [
       CSSExtract,
+      new CopyWebpackPlugin([
+        { from: 'storage/img', to: 'img' },
+      ]),
     ],
     devtool: isProduction ? 'source-map' : 'inline-source-map',
     devServer: {
       contentBase: path.join(__dirname, 'public'),
+      historyApiFallback: true,
     },
   };
 };
