@@ -1,0 +1,99 @@
+.user_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-top: 38px;
+  margin-bottom: 35px;
+}
+
+.user_info__container {
+  text-align: center;
+}
+
+.user_info__photo {
+  position: absolute;
+  top: -48px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.user_info__name {
+  position: relative;
+  margin: 0;
+  color: #002C71;
+  font-size: 18px;
+  line-height: 23px;
+}
+
+.user_info__like {
+  position: absolute;
+  right: -25px;
+  color: #D3D3D3;
+  font-size: 12px;
+  line-height: 23px;
+}
+
+.user_info__location {
+  margin: 0;
+  color: #8298B9;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.user_info__share {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: #FFA640;
+}
+
+.user_info__link {
+  display: none;
+  position: absolute;
+  top: 40px;
+  right: 10px;
+  height: 45px;
+  width: auto;
+  padding: 0 20px;
+  background: rgba(0, 0, 0, .8);
+  color: #FFFFFF;
+  font-size: 12px;
+  line-height: 45px;
+}
+
+.user_info__link--display {
+  display: block;
+}
+
+@media screen and (min-width: 450px) {
+  .user_info {
+    margin: 20px 0;
+  }
+  .user_info__container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .user_info__photo {
+    position: initial;
+    width: 70px;
+  }
+  .user_info__box {
+    padding-left: 18px;
+  }
+}
