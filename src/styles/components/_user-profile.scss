@@ -2,10 +2,9 @@
   position: relative;
   max-width: 500px;
   padding-top: 48px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: $m-size;
+  padding-right: $m-size;
   font-family: 'Montserrat', sans-serif;
-  font-size: 62.5%;
 }
 
 .user_profile__wrapper {
@@ -14,7 +13,7 @@
   left: 0;
   height: 95px;
   width: 100%;
-  background: #002C71;
+  background: $blue;
   border-radius: 5px 5px 0 0;
 }
 
@@ -24,13 +23,13 @@
   top: 0;
   height: calc(100% - 59px);
   width: 100%;
-  background: #FFFFFF;
-  -webkit-box-shadow: 0 0 4px 0 rgba(172, 172, 172, 0.50);
-  box-shadow: 0 0 4px 0 rgba(172, 172, 172, 0.50);
+  background: $white;
+  -webkit-box-shadow: 0 0 $shad-size 0 $gray-light-transp;
+  box-shadow: 0 0 $shad-size 0 $gray-light-transp;
   border-radius: 5px;
 }
 
-@media screen and (min-width: 450px) {
+@media screen and (min-width: $desktop-breakpoint) {
   .user_profile__background {
     height: calc(100% - 98px);
   }

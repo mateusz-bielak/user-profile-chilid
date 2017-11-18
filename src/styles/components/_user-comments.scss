@@ -13,17 +13,17 @@
   overflow-y: hidden;
   max-height: 590px;
   margin-top: 15px;
-  background-color: #FFFFFF;
+  background-color: $white;
   border-radius: 5px;
-  -webkit-box-shadow: 0px 0px 4px 0px rgba(172, 172, 172, 0.5);
-  box-shadow: 0px 0px 4px 0px rgba(172, 172, 172, 0.5);
+  -webkit-box-shadow: 0px 0px $shad-size 0px $gray-light-transp;
+  box-shadow: 0px 0px $shad-size 0px $gray-light-transp;
 }
 
 .user_comments__hiding {
-  margin-top: 25px;
+  margin-top: $xxl-size;
   margin-bottom: 30px;
-  color: #FFA640;
-  font-size: 14px;
+  color: $orange;
+  font-size: $m-size;
   -webkit-text-decoration-line: underline;
   text-decoration-line: underline;
 }
@@ -49,14 +49,14 @@
 
 .user_comments__scroll::-webkit-scrollbar-thumb {
   border-radius: 100px;
-  background: rgba(0, 44, 113, 0.12);
+  background: $blue-light;
 }
 
 .user_comments__form {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   width: 100%;
-  padding: 15px 25px 19px 25px;
+  padding: 15px $xxl-size $m-size $xxl-size;
   text-align: center;
 }
 
@@ -66,30 +66,30 @@
   width: 100%;
   padding: 0;
   border: none;
-  border-bottom: 2px solid #DBE0E8;
-  color: #002C71;
-  font-size: 18px;
+  border-bottom: 2px solid $solitude;
+  color: $blue;
+  font-size: $l-size;
   line-height: 22px;
 }
 
 .user_comments__textbox::-webkit-input-placeholder {
-  color: #8298B9;
+  color: $blue-bright;
 }
 
 .user_comments__textbox:-ms-input-placeholder {
-  color: #8298B9;
+  color: $blue-bright;
 }
 
 .user_comments__textbox::placeholder {
-  color: #8298B9;
+  color: $blue-bright;
 }
 
-@media screen and (min-width: 450px) {
+@media screen and (min-width: $desktop-breakpoint) {
   .user_comments__hiding {
     margin-right: auto;
-    margin-left: 20px;
+    margin-left: $m-size;
   }
   .user_comments__form {
-    padding: 42px 25px 32px 25px;
+    padding: 42px $xxl-size 32px $xxl-size;
   }
 }

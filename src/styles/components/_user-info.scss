@@ -32,31 +32,31 @@
 .user_info__name {
   position: relative;
   margin: 0;
-  color: #002C71;
-  font-size: 18px;
+  color: $blue;
+  font-size: $l-size;
   line-height: 23px;
 }
 
 .user_info__like {
   position: absolute;
-  right: -25px;
-  color: #D3D3D3;
-  font-size: 12px;
+  right: -$xxl-size;
+  color: $gray-light;
+  font-size: $s-size;
   line-height: 23px;
 }
 
 .user_info__location {
   margin: 0;
-  color: #8298B9;
-  font-size: 12px;
+  color: $blue-bright;
+  font-size: $s-size;
   line-height: 15px;
 }
 
 .user_info__share {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  color: #FFA640;
+  top: $s-size;
+  right: $s-size;
+  color: $orange;
 }
 
 .user_info__link {
@@ -66,10 +66,10 @@
   right: 10px;
   height: 45px;
   width: auto;
-  padding: 0 20px;
+  padding: 0 $m-size;
   background: rgba(0, 0, 0, .8);
-  color: #FFFFFF;
-  font-size: 12px;
+  color: $white;
+  font-size: $s-size;
   line-height: 45px;
 }
 
@@ -77,9 +77,9 @@
   display: block;
 }
 
-@media screen and (min-width: 450px) {
+@media screen and (min-width: $desktop-breakpoint) {
   .user_info {
-    margin: 20px 0;
+    margin: $m-size 0;
   }
   .user_info__container {
     display: -webkit-box;
@@ -94,6 +94,6 @@
     width: 70px;
   }
   .user_info__box {
-    padding-left: 18px;
+    padding-left: $l-size;
   }
 }

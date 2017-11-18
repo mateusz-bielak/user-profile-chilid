@@ -1,10 +1,8 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 
 module.exports = (env) => {
   const isProduction = env === 'production';
-  const CSSExtract = new ExtractTextPlugin('./styles/styles.css');
 
   return {
     entry: './src/app.js',
@@ -20,21 +18,13 @@ module.exports = (env) => {
           loader: 'babel-loader',
         }, {
           test: /\.s?css$/,
-          use: CSSExtract.extract({
-            use: [
-              {
-                loader: 'css-loader',
-                options: {
-                  sourceMap: true,
-                },
-              }, {
-                loader: 'sass-loader',
-                options: {
-                  sourceMap: true,
-                },
-              },
-            ],
-          }),
+          use: [{
+            loader: 'style-loader',
+          }, {
+            loader: 'css-loader',
+          }, {
+            loader: 'sass-loader',
+          }],
         }, {
           test: /\.html$/,
           loader: 'file-loader',
@@ -44,7 +34,6 @@ module.exports = (env) => {
         }],
     },
     plugins: [
-      CSSExtract,
       new CopyWebpackPlugin([
         { from: 'storage/img', to: 'img' },
       ]),

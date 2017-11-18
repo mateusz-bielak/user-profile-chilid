@@ -15,16 +15,16 @@
   height: 46px;
   width: 100%;
   margin-top: 21px;
-  background-color: #FFA640;
+  background-color: $orange;
   border-radius: 100px;
-  color: #FFFFFF;
-  font-size: 14px;
+  color: $white;
+  font-size: $m-size;
   font-weight: 600;
   letter-spacing: 4.2px;
   text-transform: uppercase;
 }
 
-@media screen and (min-width: 450px) {
+@media screen and (min-width: $desktop-breakpoint) {
   .user_followers {
     display: -webkit-box;
     display: -ms-flexbox;
