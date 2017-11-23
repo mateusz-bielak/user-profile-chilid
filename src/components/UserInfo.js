@@ -8,12 +8,16 @@ class UserInfo extends React.Component {
     user_name: data.user_name,
     user_location: data.user_location,
     link: data.link,
-  };
+    showLink: false,
+  }
   showLink = () => {
-    const element = document.querySelector('.user_info__link');
-    element.classList.toggle('user_info__link--display');
+    this.setState({ showLink: !this.state.showLink });
   }
   render() {
+    const showLinkClass = ['user_info__link'];
+    if (this.state.showLink) {
+      showLinkClass.push('user_info__link--display');
+    }
     return (
       <div className="user_info">
         <div className="user_info__container">
@@ -33,7 +37,7 @@ class UserInfo extends React.Component {
         <button onClick={this.showLink} className="user_info__share">
           <i className="fa fa-share-square-o" aria-hidden="true" />
         </button>
-        <div className="user_info__link">
+        <div className={showLinkClass.join(' ')}>
           { this.state.link }
         </div>
       </div>

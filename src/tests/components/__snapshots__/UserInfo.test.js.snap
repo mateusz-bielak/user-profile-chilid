@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render UserInfo correctly 1`] = `
+<div
+  className="user_info"
+>
+  <div
+    className="user_info__container"
+  >
+    <div
+      alt="user.jpg"
+      className="user_info__photo"
+      style={
+        Object {
+          "backgroundImage": "url(./img/user-photo.jpg)",
+        }
+      }
+    />
+    <div
+      className="user_info__box"
+    >
+      <p
+        className="user_info__name"
+      >
+        Harvey Specter
+        <button
+          className="user_info__like"
+          onClick={[Function]}
+        >
+          <i
+            aria-hidden="true"
+            className="fa fa-heart-o"
+          />
+        </button>
+      </p>
+      <p
+        className="user_info__location"
+      >
+        New York, USA
+      </p>
+    </div>
+  </div>
+  <button
+    className="user_info__share"
+    onClick={[Function]}
+  >
+    <i
+      aria-hidden="true"
+      className="fa fa-share-square-o"
+    />
+  </button>
+  <div
+    className="user_info__link"
+  >
+    https://butseriously.github.io/user-profile-chilid/
+  </div>
+</div>
+`;
