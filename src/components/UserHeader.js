@@ -8,34 +8,24 @@ class UserHeader extends React.Component {
     likes: data.likes,
     following: data.following,
     followers: data.followers,
+    isLikeAdded: false,
+    isFollowersAdded: false,
   };
-  isLikeAdded = false;
-  isFollowersAdded = false;
   toggleLike = () => {
-    this.setState((prevState) => {
-      if (this.isLikeAdded) {
-        return {
-          likes: [prevState.likes[0], prevState.likes[1] + 1],
-        };
-      }
-      return {
-        likes: [prevState.likes[0], prevState.likes[1] - 1],
-      };
-    });
-    this.isLikeAdded = !this.isLikeAdded;
+    this.setState(prevState => ({
+      likes: !this.state.isLikeAdded ?
+        [prevState.likes[0], prevState.likes[1] + 1] :
+        [prevState.likes[0], prevState.likes[1] - 1],
+      isLikeAdded: !prevState.isLikeAdded,
+    }));
   }
   toggleFollowers = () => {
-    this.setState((prevState) => {
-      if (this.isFollowersAdded) {
-        return {
-          followers: [prevState.followers[0], prevState.followers[1] + 1],
-        };
-      }
-      return {
-        followers: [prevState.followers[0], prevState.followers[1] - 1],
-      };
-    });
-    this.isFollowersAdded = !this.isFollowersAdded;
+    this.setState(prevState => ({
+      followers: !this.state.isFollowersAdded ?
+        [prevState.followers[0], prevState.followers[1] + 1] :
+        [prevState.followers[0], prevState.followers[1] - 1],
+      isFollowersAdded: !prevState.isFollowersAdded,
+    }));
   }
   render() {
     return (
