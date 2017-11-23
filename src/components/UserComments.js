@@ -7,6 +7,7 @@ class UserComments extends React.Component {
   state = {
     comments: data.comments,
     user: data.logged_in,
+    commentsAmount: data.comments.length,
   };
   areCommentsVisible = true;
 
@@ -24,6 +25,7 @@ class UserComments extends React.Component {
           content,
           date: new Date(),
         }]),
+        commentsAmount: prevState.commentsAmount + 1,
       }));
     }
   }
@@ -43,7 +45,7 @@ class UserComments extends React.Component {
     return (
       <div className="user_comments">
         <button onClick={this.hide} className="user_comments__hiding">Hide comments (
-          { this.state.comments.length })
+          { this.state.commentsAmount })
         </button>
         <div className="user_comments__scroll">
           { [this.state.comments.map(comment =>
