@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render UserComments 1`] = `
+<div
+  className="user_comments"
+>
+  <button
+    className="user_comments__hiding"
+    onClick={[Function]}
+  >
+    Hide comments
+     (
+    2
+    )
+  </button>
+  <div
+    className="user_comments__scroll"
+  >
+    <UserComment
+      comment={
+        Object {
+          "content": "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula.",
+          "date": "2017-10-20T12:45:03.564Z",
+          "name": "Mike Ross",
+          "photo": "./img/user-photo.jpg",
+        }
+      }
+      key="uuid"
+    />
+    <UserComment
+      comment={
+        Object {
+          "content": "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula.",
+          "date": "2017-10-22T07:11:00.611Z",
+          "name": "Mike Ross",
+          "photo": "./img/user-photo.jpg",
+        }
+      }
+      key="uuid"
+    />
+  </div>
+  <form
+    className="user_comments__form"
+    onSubmit={[Function]}
+  >
+    <input
+      className="user_comments__textbox"
+      name="comment"
+      placeholder="Add a comment"
+      type="text"
+    />
+  </form>
+</div>
+`;
