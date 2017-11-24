@@ -8,16 +8,15 @@ class UserComments extends React.Component {
     comments: data.comments,
     user: data.logged_in,
     commentsAmount: data.comments.length,
+    areCommentsVisible: true,
+    hidingButtonTextContent: 'Hide comments',
   };
-  areCommentsVisible = true;
 
   addComment = (e) => {
     e.preventDefault();
     const content = e.target.elements.comment.value.trim();
     e.target.elements.comment.value = ''; // Reset text input value
     if (content) {
-      const element = document.querySelector('.user_comments__scroll');
-      element.classList.remove('user_comments__scroll--display');
       this.setState(prevState => ({
         comments: prevState.comments.concat([{
           photo: this.state.user.photo,
@@ -26,34 +25,39 @@ class UserComments extends React.Component {
           date: new Date(),
         }]),
         commentsAmount: prevState.commentsAmount + 1,
+        areCommentsVisible: true,
       }));
     }
   }
 
-  hide = () => {
-    const element = document.querySelector('.user_comments__scroll');
-    element.classList.toggle('user_comments__scroll--display');
-    const button = document.querySelector('.user_comments__hiding');
-    this.areCommentsVisible = !this.areCommentsVisible;
-    if (this.areCommentsVisible) {
-      button.textContent = `Show comments (${this.state.comments.length})`;
-    } else {
-      button.textContent = `Hide comments (${this.state.comments.length})`;
-    }
+  hidingButton = () => {
+    this.setState(prevState => ({
+      areCommentsVisible: !prevState.areCommentsVisible,
+      hidingButtonTextContent: this.state.areCommentsVisible ?
+        'Show comments' : 'Hide comments',
+    }));
   }
 
   sortCommentsByDate = () =>
     this.state.comments.sort((a, b) =>
       new Date(a.date) - new Date(b.date));
 
+  handleCommentsDisplaying = () => {
+    const classList = ['user_comments__scroll'];
+    if (!this.state.areCommentsVisible) {
+      classList.push('user_comments__scroll--display');
+    }
+    return classList;
+  }
+
   render() {
     this.sortCommentsByDate();
     return (
       <div className="user_comments">
-        <button onClick={this.hide} className="user_comments__hiding">Hide comments (
+        <button onClick={this.hidingButton} className="user_comments__hiding">{this.state.hidingButtonTextContent} (
           { this.state.commentsAmount })
         </button>
-        <div className="user_comments__scroll">
+        <div className={this.handleCommentsDisplaying().join(' ')} >
           { [this.state.comments.map(comment =>
             <UserComment key={uuid()} comment={comment} />)] }
         </div>
