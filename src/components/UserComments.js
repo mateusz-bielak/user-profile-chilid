@@ -13,8 +13,8 @@ class UserComments extends React.Component {
 
   addComment = (e) => {
     e.preventDefault();
-    const content = e.target.elements.comma.value.trim();
-    e.target.elements.comma.value = ''; // Reset text input value
+    const content = e.target.elements.comment.value.trim();
+    e.target.elements.comment.value = ''; // Reset text input value
     if (content) {
       const element = document.querySelector('.user_comments__scroll');
       element.classList.remove('user_comments__scroll--display');
@@ -29,6 +29,7 @@ class UserComments extends React.Component {
       }));
     }
   }
+
   hide = () => {
     const element = document.querySelector('.user_comments__scroll');
     element.classList.toggle('user_comments__scroll--display');
@@ -40,8 +41,13 @@ class UserComments extends React.Component {
       button.textContent = `Hide comments (${this.state.comments.length})`;
     }
   }
+
+  sortCommentsByDate = () =>
+    this.state.comments.sort((a, b) =>
+      new Date(a.date) - new Date(b.date));
+
   render() {
-    this.state.comments.sort((a, b) => new Date(a.date) - new Date(b.date));
+    this.sortCommentsByDate();
     return (
       <div className="user_comments">
         <button onClick={this.hide} className="user_comments__hiding">Hide comments (
@@ -52,7 +58,7 @@ class UserComments extends React.Component {
             <UserComment key={uuid()} comment={comment} />)] }
         </div>
         <form onSubmit={this.addComment} className="user_comments__form">
-          <input className="user_comments__textbox" type="text" name="comma" placeholder="Add a comment" />
+          <input className="user_comments__textbox" type="text" name="comment" placeholder="Add a comment" />
         </form>
       </div>
     );
