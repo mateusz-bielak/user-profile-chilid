@@ -35,3 +35,24 @@ test('should not add comment when no value provided', () => {
   });
   expect(wrapper.state('comments')).toHaveLength(0);
 });
+
+test('should hide comments', () => {
+  const wrapper = shallow(<UserComments />);
+  wrapper.find('button').simulate('click');
+  expect(wrapper.state('areCommentsVisible')).toBe(false);
+  expect(wrapper.find('div').at(1).hasClass('user_comments__scroll--display')).toBe(true);
+  expect(wrapper.find('button').text()).toBe('Show comments (2)');
+});
+
+test('should show comments', () => {
+  const wrapper = shallow(<UserComments />);
+
+  // Make sure that comments are hidden
+  wrapper.setState({ areCommentsVisible: false });
+  expect(wrapper.find('div').at(1).hasClass('user_comments__scroll--display')).toBe(true);
+
+  // Show comments
+  wrapper.find('button').simulate('click');
+  expect(wrapper.state('areCommentsVisible')).toBe(true);
+  expect(wrapper.find('div').at(1).hasClass('user_comments__scroll--display')).toBe(false);
+});
