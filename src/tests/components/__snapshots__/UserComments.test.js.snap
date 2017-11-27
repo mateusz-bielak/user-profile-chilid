@@ -20,7 +20,7 @@ exports[`should render UserComments 1`] = `
       comment={
         Object {
           "content": "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula.",
-          "date": "2017-10-20T12:45:03.564Z",
+          "date": "2017-11-26T12:45:03.564Z",
           "name": "Mike Ross",
           "photo": "./img/user-photo.jpg",
         }
@@ -31,7 +31,7 @@ exports[`should render UserComments 1`] = `
       comment={
         Object {
           "content": "Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula.",
-          "date": "2017-10-22T07:11:00.611Z",
+          "date": "2017-11-27T07:11:00.611Z",
           "name": "Mike Ross",
           "photo": "./img/user-photo.jpg",
         }
