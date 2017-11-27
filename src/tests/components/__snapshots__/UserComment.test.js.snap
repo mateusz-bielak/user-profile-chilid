@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render UserComment 1`] = `
+<div
+  className="user_comments__container"
+>
+  <div
+    alt="user.jpg"
+    className="user_comments__photo"
+    style={
+      Object {
+        "backgroundImage": "url(./img/user-photo.jpg)",
+      }
+    }
+  />
+  <div
+    className="user_comments__content"
+  >
+    <p
+      className="user_comments__name"
+    >
+      Mike Ross
+    </p>
+    <p
+      className="user_comments__commentary"
+    >
+      Lorem ipsum dolor sit amet enim. Etiam ullamcorper. Suspendisse a pellentesque dui, non felis. Maecenas malesuada elit lectus felis, malesuada ultricies. Curabitur et ligula.
+    </p>
+  </div>
+  <p
+    className="user_comments__date"
+  >
+    36d
+  </p>
+</div>
+`;
