@@ -1,25 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import moment from 'moment';
 
 class UserComment extends React.Component {
   timeDifference = (prevDate) => {
-    const current = new Date();
-    const previous = new Date(prevDate);
-
-    const msPerMinute = 60 * 1000;
-    const msPerHour = msPerMinute * 60;
-    const msPerDay = msPerHour * 24;
-
-    const elapsed = current - previous;
-
-    if (elapsed < msPerMinute) {
-      return `${Math.floor(elapsed / 1000)}s`;
-    } else if (elapsed < msPerHour) {
-      return `${Math.floor(elapsed / msPerMinute)}m`;
-    } else if (elapsed < msPerDay) {
-      return `${Math.floor(elapsed / msPerHour)}h`;
-    }
-    return `${Math.floor(elapsed / msPerDay)}d`;
+    const current = moment();
+    const previous = moment(prevDate);
+    return current.from(previous, true);
   };
   render() {
     return (

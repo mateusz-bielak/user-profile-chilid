@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import uuid from 'uuid';
 import data from '../../storage/data.json';
 import UserComment from './UserComment';
@@ -22,7 +23,7 @@ class UserComments extends React.Component {
           photo: this.state.user.photo,
           name: this.state.user.user,
           content,
-          date: new Date(),
+          date: moment(),
         }]),
         commentsAmount: prevState.commentsAmount + 1,
         areCommentsVisible: true,
@@ -40,7 +41,7 @@ class UserComments extends React.Component {
 
   sortCommentsByDate = () =>
     this.state.comments.sort((a, b) =>
-      new Date(a.date) - new Date(b.date));
+      moment(a.date) - moment(b.date));
 
   handleCommentsDisplaying = () => {
     const classList = ['user_comments__scroll'];

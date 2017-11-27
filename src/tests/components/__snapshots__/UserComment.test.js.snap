@@ -30,7 +30,7 @@ exports[`should render UserComment 1`] = `
   <p
     className="user_comments__date"
   >
-    36d
+    3 days
   </p>
 </div>
 `;
