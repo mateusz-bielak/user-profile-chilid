@@ -62,7 +62,7 @@
 .user_info__link {
   display: none;
   position: absolute;
-  top: 40px;
+  top: 45px;
   right: 10px;
   height: 45px;
   width: auto;
@@ -71,6 +71,18 @@
   color: $white;
   font-size: $s-size;
   line-height: 45px;
+}
+
+.user_info__link:before {
+  content:"";
+  position: absolute;
+  bottom: 100%;
+  right: 6px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 10px solid rgba(0, 0, 0, .8);
 }
 
 .user_info__link--display {
