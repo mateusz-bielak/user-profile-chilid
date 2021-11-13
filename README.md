@@ -13,5 +13,3 @@ npm run build:dev - for development build
 npm run build:prod - for production build
 npm run serve
 ```
-
-https://butseriously.github.io/user-profile-chilid/ - click to see live.
